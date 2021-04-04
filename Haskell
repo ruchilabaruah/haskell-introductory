@@ -1,0 +1,82 @@
+Introduction:
+
+1. Haskell is a purely functional language.
+The only thing a function can do is calculate something and return it as a result. No side effects.
+2. Haskell is lazy.
+ Unless specifically told otherwise, Haskell won't execute functions and calculate things until it's really forced to show you a result.
+3. Haskell is statically typed.
+Types are assumed by reference.
+
+Starting out:
+1. In Haskell, functions are called by writing the function name, a space and then the parameters, separated by spaces.
+Example:
+min 9 10
+--> 9
+
+9 `min` 10
+--> 9
+
+succ 9 * 10
+--> 10 * 10
+--> 100
+
+succ (9 * 10)
+--> 91
+
+Comparing to imperative language:
+
+bar(3, "haha") --- changes to --- bar 3 "haha"
+bar()          --- changes to --- bar
+bar(1)         --- changes to --- bar
+bar (bar 3)    --- This does not mean that bar is called with `bar` and 3. It means `bar` is called with 3 first and then `bar` is again called with the result.
+
+2. Defining a function
+
+functionName parameters = body
+Example:
+doubleMe x = x + x
+doubleUs x y = x*2 + y*2
+doubleUs x y = doubleMe x + doubleMe y
+
+3. Calling a function
+Example:
+doubleMe 4
+--> 8
+
+4. If statement
+if x then (x + 1) else x
+
+4. Functions can't begin with uppercase letters.
+
+5. Lists are a homogenous data structure in Haskell
+Example:
+[1,2,'a',3,'b','c',4] will  throw error
+
+6. Adding Lists
+Example:
+[1,2,3,4] ++ [9,10,11,12] ---> [1,2,3,4,9,10,11,12]
+++ requires list on both sides. Haskell has to walk through the whole list on the left side of ++
+
+But, putting something at the beginning of a list using the : operator (also called the cons operator) is instantaneous.
+Example:
+'A':" SMALL CAT"  --->  "A SMALL CAT"
+5:[1,2,3,4,5]  ----> [5,1,2,3,4,5]
+
+If you want to get an element out of a list by index, use !!. The indices start at 0.
+Example:
+"Steve Buscemi" !! 6  --> 'B'
+[9.4,33.2,96.2,11.2,23.25] !! 1  --> 33.2
+
+7. Comparing Lists
+elements are compared in lexicographical order. First the heads are compared. If they are equal then the second elements are compared, etc.
+[3,2,1] > [2,1,0] --> True
+[3,2,1] > [2,10,100]  --> True
+[3,4,2] == [3,4,2]  --> True
+
+8. Some Functions on Lists
+head [5,4,3,2,1]  --> 5
+tail [5,4,3,2,1]  --> [4,3,2,1]
+last [5,4,3,2,1]  --> 1
+init [5,4,3,2,1]  --> [5,4,3,2]
+
+9. Ranges
